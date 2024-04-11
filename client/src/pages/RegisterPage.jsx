@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import "../styles/Register.scss";
 
 const RegisterPage = () => {
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,8 +20,6 @@ const RegisterPage = () => {
       [name]: name === "profileImage" ? files[0] : value,
     });
   };
-
-  console.log(formData)
 
   const [passwordMatch, setPasswordMatch] = useState(true)
 
@@ -59,8 +56,7 @@ const RegisterPage = () => {
     <div className="register">
       <div className="register_content">
         <form className="register_content_form" onSubmit={handleSubmit}>
-
-        <input
+          <input
             placeholder="First Name"
             name="firstName"
             value={formData.firstName}
@@ -98,18 +94,19 @@ const RegisterPage = () => {
             type="password"
             required
           />
+
           {!passwordMatch && (
             <p style={{ color: "red" }}>Passwords are not matched!</p>
           )}
 
-          <input 
-          id="image"
-          type="file" 
-          name="profileImage"
-          accept="image/*"
-          style={{display:"none"}}
-          onChange={handleChange}
-          required
+          <input
+            id="image"
+            type="file"
+            name="profileImage"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleChange}
+            required
           />
           <label htmlFor="image">
             <img src="/assets/addImage.png" alt="add profile photo" />
@@ -123,13 +120,10 @@ const RegisterPage = () => {
               style={{ maxWidth: "80px" }}
             />
           )}
-
           <button type="submit" disabled={!passwordMatch}>REGISTER</button>
-
         </form>
         <a href="/login">Already have an account? Log In Here</a>
       </div>
-      
     </div>
   );
 };
