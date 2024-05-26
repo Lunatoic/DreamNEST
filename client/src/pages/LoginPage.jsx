@@ -28,7 +28,7 @@ const LoginPage = () => {
       /* Get data after fetching */
       const loggedIn = await response.json()
 
-      if (loggedIn) {
+      if (loggedIn.success) {
         dispatch (
           setLogin({
             user: loggedIn.user,
@@ -36,6 +36,8 @@ const LoginPage = () => {
           })
         )
         navigate("/")
+      }else{
+        alert("Login failed")
       }
 
     } catch (err) {
